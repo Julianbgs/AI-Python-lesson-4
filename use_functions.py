@@ -33,21 +33,47 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-
-while True:
+amount = 0
+history = {}
+is_run = True
+while is_run:
     print('1. пополнение счета')
     print('2. покупка')
     print('3. история покупок')
     print('4. выход')
+    print(f'Ваш счет {amount}')
+
+    def adding_amount():
+        global amount
+        add_amount = input('Введите сумму для пополнения счета: ')
+        amount += int(add_amount)
+
+    def adding_purchase():
+        global amount
+        add_purchase = input('Введите сумму покупки: ')
+        if int(add_purchase) > amount:
+            print('Денег не хвататет')
+        else:
+            purchase_name = input('Введите название покупки: ')
+            amount = amount - int(add_purchase)
+            history[purchase_name] = add_purchase
+
+    def show_history():
+        parse_history = ''
+        for key, value in history.items():
+            parse_history += f'\n{key} - {value}'
+        print(f'Ваша история: {parse_history}')
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        pass
+        adding_amount()
     elif choice == '2':
-        pass
+        adding_purchase()
     elif choice == '3':
-        pass
+        show_history()
     elif choice == '4':
-        break
+        is_run = False
     else:
         print('Неверный пункт меню')
+
+

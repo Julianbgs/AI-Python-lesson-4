@@ -10,9 +10,8 @@
 def simple_separator():
     """
     Функция создает красивый резделитель из 10-и звездочек (**********)
-    :return: **********
-    """
-    pass
+        """
+    return '**********'
 
 
 print(simple_separator() == '**********')  # True
@@ -24,8 +23,10 @@ def long_separator(count):
     :param count: количество звездочек
     :return: строка разделитель, примеры использования ниже
     """
-    pass
-
+    result = ''
+    for v in range(count):
+        result += '*'
+    return result
 
 print(long_separator(3) == '***')  # True
 print(long_separator(4) == '****')  # True
@@ -38,7 +39,10 @@ def separator(simbol, count):
     :param count: количество повторений
     :return: строка разделитель примеры использования ниже
     """
-    pass
+    result = ''
+    for v in range(count):
+        result += simbol
+    return result
 
 
 print(separator('-', 10) == '----------')  # True
@@ -55,8 +59,8 @@ def hello_world():
     ##########
     :return: None
     """
-    pass
-
+    result = '**********\n\nHello World!\n\n##########'
+    print(result)
 
 '''
 **********
@@ -79,7 +83,8 @@ def hello_who(who='World'):
     :param who: кого мы приветствуем, по умолчанию World
     :return: None
     """
-    pass
+    result = f'**********\n\nHello {who}!\n\n##########'
+    print(result)
 
 
 '''
@@ -115,7 +120,11 @@ def pow_many(power, *args):
     :param args: любое количество цифр
     :return: результат вычисления # True -> (1 + 2)**1
     """
-    pass
+    sum = 0
+    for elem in args:
+        sum += elem
+    result = sum**power
+    return result
 
 
 print(pow_many(1, 1, 2) == 3)  # True -> (1 + 2)**1 == 3
@@ -133,7 +142,8 @@ def print_key_val(**kwargs):
     :param kwargs: любое количество именованных параметров
     :return: None
     """
-    pass
+    for key, value in kwargs.items():
+        print(f'{key} --> {value}')
 
 
 """
@@ -158,7 +168,8 @@ def my_filter(iterable, function):
     :param function: функция фильтрации
     :return: новая отфильтрованная последовательность
     """
-    pass
+    result = list(filter(function, iterable))
+    return result
 
 
 print(my_filter([1, 2, 3, 4, 5], lambda x: x > 3) == [4, 5])  # True
